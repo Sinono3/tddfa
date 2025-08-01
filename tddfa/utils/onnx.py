@@ -7,14 +7,14 @@ import sys
 sys.path.append('..')
 
 import torch
-import models
-from utils.tddfa_util import load_model
+import tddfa.models
+from tddfa.utils.tddfa_util import load_model
 
 
 def convert_to_onnx(**kvs):
     # 1. load model
     size = kvs.get('size', 120)
-    model = getattr(models, kvs.get('arch'))(
+    model = getattr(tddfa.models, kvs.get('arch'))(
         num_classes=kvs.get('num_params', 62),
         widen_factor=kvs.get('widen_factor', 1),
         size=size,
